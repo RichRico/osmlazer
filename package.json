@@ -9,10 +9,10 @@
   "author": "Sajjad Anwar",
   "license": "ISC",
   "dependencies": {
+    "@turf/turf": "^5.1.6",
     "feature-filter": "^2.2.0",
     "minimist": "^1.2.0",
     "osmium": "^0.5.3",
-    "turf": "^3.0.14",
     "turf-line-distance": "^3.0.12"
   }
 }

@@ -30,6 +30,26 @@ mode can be basemap/density/poi/address
 
 ``` 
 
+## Update turf and @turf/line-to-polygon
+
+http://turfjs.org/
+
+For more informarion https://github.com/Turfjs/turf
+
+https://github.com/Turfjs/turf/tree/master/packages/turf-line-to-polygon
+
+```
+npm install @turf/turf
+
+npm install @turf/line-to-polygon
+
+npm install @turf/line-to-polygon --save
+
+after 
+
+npm install
+```
+
 ## Filters
 
 Filters are Mapbox GL filters. See `filters/` for examples.

@@ -1,8 +1,6 @@
 var osmium = require('osmium');
 var argv = require('minimist')(process.argv.slice(2));
-var turf = require('turf');
-var lineDistance = require('turf-line-distance');
-
+var turf = require('@turf/turf');
 var fs = require('fs');
 
 var file = new osmium.File(argv.file);
@@ -146,7 +144,7 @@ if (argv.mode === 'basemap'){
     }
     if (tags.hasOwnProperty('highway') && tags.hasOwnProperty('oneway') && tags.oneway === 'yes') {
       try{    
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_oneway')){
           countJson['l_oneway'] = length + countJson['l_oneway'];
         } else {
@@ -161,7 +159,7 @@ if (argv.mode === 'basemap'){
     if (tags.hasOwnProperty('highway') && tags.hasOwnProperty('name')) {
 
       try{    
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_named_highway')){
           countJson['l_named_highway'] = length + countJson['l_named_highway'];
         } else {
@@ -204,7 +202,7 @@ if (argv.mode === 'basemap'){
     }
     if (tags.hasOwnProperty('highway') && tags.highway === 'primary') {
       try{   
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_primary')){
           countJson['l_primary'] = length + countJson['l_primary'];
         } else {
@@ -238,7 +236,7 @@ if (argv.mode === 'basemap'){
     }
     if (tags.hasOwnProperty('highway') && tags.highway === 'primary_link') {
       try{    
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_primary_link')){
           countJson['l_primary_link'] = length + countJson['l_primary_link'];
         } else {
@@ -269,7 +267,7 @@ if (argv.mode === 'basemap'){
     }
     if (tags.hasOwnProperty('highway') && tags.highway === 'secondary') {
       try{     
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_secondary')){
           countJson['l_secondary'] = length + countJson['l_secondary'];
         } else {
@@ -300,7 +298,7 @@ if (argv.mode === 'basemap'){
     }
     if (tags.hasOwnProperty('highway') && tags.highway === 'secondary_link') {
       try{    
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_secondary_link')){
           countJson['l_secondary_link'] = length + countJson['l_secondary_link'];
         } else {
@@ -331,7 +329,7 @@ if (argv.mode === 'basemap'){
     }
     if (tags.hasOwnProperty('highway') && tags.highway === 'tertiary') {
       try{     
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_tertiary')){
           countJson['l_tertiary'] = length + countJson['l_tertiary'];
         } else {
@@ -360,9 +358,11 @@ if (argv.mode === 'basemap'){
       }
 
     }
+
+
     if (tags.hasOwnProperty('highway') && tags.highway === 'tertiary_link') {
       try{    
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_tertiary_link')){
           countJson['l_tertiary_link'] = length + countJson['l_tertiary_link'];
         } else {
@@ -393,7 +393,7 @@ if (argv.mode === 'basemap'){
     }
     if (tags.hasOwnProperty('highway') && tags.highway === 'motorway') {
       try{    
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_motorway')){
           countJson['l_motorway'] = length + countJson['l_motorway'];
         } else {
@@ -423,7 +423,7 @@ if (argv.mode === 'basemap'){
     }
     if (tags.hasOwnProperty('highway') && tags.highway === 'motorway_link') {
       try{    
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_motorway_link')){
           countJson['l_motorway_link'] = length + countJson['l_motorway_link'];
         } else {
@@ -454,7 +454,7 @@ if (argv.mode === 'basemap'){
     }
     if (tags.hasOwnProperty('highway') && tags.highway === 'trunk') {
       try{    
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_trunk')){
           countJson['l_trunk'] = length + countJson['l_trunk'];
         } else {
@@ -485,7 +485,7 @@ if (argv.mode === 'basemap'){
     }
     if (tags.hasOwnProperty('highway') && tags.highway === 'trunk_link') {
       try{     
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_trunk_link')){
           countJson['l_trunk_link'] = length + countJson['l_trunk_link'];
         } else {
@@ -517,7 +517,7 @@ if (argv.mode === 'basemap'){
     if (tags.hasOwnProperty('highway') && tags.highway === 'residential') {
     
       try{ 
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_residential')){
           countJson['l_residential'] = length + countJson['l_residential'];
         } else {
@@ -548,7 +548,7 @@ if (argv.mode === 'basemap'){
     }
     if (tags.hasOwnProperty('highway') && tags.highway === 'unclassified') {
       try{    
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_unclassified')){
           countJson['l_unclassified'] = length + countJson['l_unclassified'];
         } else {
@@ -579,7 +579,7 @@ if (argv.mode === 'basemap'){
     if (tags.hasOwnProperty('highway') && tags.highway === 'service') {
 
       try{    
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_service')){
           countJson['l_service'] = length + countJson['l_service'];
         } else {
@@ -609,7 +609,7 @@ if (argv.mode === 'basemap'){
     if (tags.hasOwnProperty('highway') && tags.highway === 'living_street') {
       try{
      
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_living_street')){
           countJson['l_living_street'] = length + countJson['l_living_street'];
         } else {
@@ -639,7 +639,7 @@ if (argv.mode === 'basemap'){
     if (tags.hasOwnProperty('highway') && tags.highway === 'footway') {
       try{
      
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_footway')){
           countJson['l_footway'] = length + countJson['l_footway'];
         } else {
@@ -657,7 +657,7 @@ if (argv.mode === 'basemap'){
     if (tags.hasOwnProperty('highway') && tags.highway === 'track') {
       try{
      
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_track')){
           countJson['l_track'] = length + countJson['l_track'];
         } else {
@@ -675,7 +675,7 @@ if (argv.mode === 'basemap'){
     if (tags.hasOwnProperty('highway') && tags.highway === 'path') {
       try{
      
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_path')){
           countJson['l_path'] = length + countJson['l_path'];
         } else {
@@ -693,7 +693,7 @@ if (argv.mode === 'basemap'){
     if (tags.hasOwnProperty('railway') && tags.railway === 'rail' && !tags.hasOwnProperty('service')) {
       try{
      
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (tags.hasOwnProperty('name')){
           if (countJson.hasOwnProperty('l_named_rail')){
             countJson['l_named_rail'] = length + countJson['l_named_rail'];
@@ -728,7 +728,7 @@ if (argv.mode === 'basemap'){
     if (tags.hasOwnProperty('railway') && tags.railway === 'subway') {
       try{
      
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (tags.hasOwnProperty('name')){
           if (countJson.hasOwnProperty('l_named_subway')){
             countJson['l_named_subway'] = length + countJson['l_named_subway'];
@@ -763,7 +763,7 @@ if (argv.mode === 'basemap'){
     if (tags.hasOwnProperty('railway') && tags.railway === 'light_rail') {
       try{
      
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (tags.hasOwnProperty('name')){
           if (countJson.hasOwnProperty('l_named_light_rail')){
             countJson['l_named_light_rail'] = length + countJson['l_named_light_rail'];
@@ -798,7 +798,7 @@ if (argv.mode === 'basemap'){
     if (tags.hasOwnProperty('railway') && tags.railway === 'tram') {
       try{
      
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (tags.hasOwnProperty('name')){
           if (countJson.hasOwnProperty('l_named_tram')){
             countJson['l_named_tram'] = length + countJson['l_named_tram'];
@@ -833,7 +833,7 @@ if (argv.mode === 'basemap'){
     if (tags.hasOwnProperty('highway') && tags.highway === 'cycleway') {
       try{
      
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (tags.hasOwnProperty('name')){
           if (countJson.hasOwnProperty('l_named_cycleway')){
             countJson['l_named_cycleway'] = length + countJson['l_named_cycleway'];
@@ -868,7 +868,7 @@ if (argv.mode === 'basemap'){
     if (tags.hasOwnProperty('highway') && tags.highway === 'footway') {
       try{
      
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (tags.hasOwnProperty('name')){
           if (countJson.hasOwnProperty('l_named_footway')){
             countJson['l_named_footway'] = length + countJson['l_named_footway'];
@@ -903,7 +903,7 @@ if (argv.mode === 'basemap'){
     if (tags.hasOwnProperty('highway') && tags.highway === 'path') {
       try{
      
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (tags.hasOwnProperty('name')){
           if (countJson.hasOwnProperty('l_named_path')){
             countJson['l_named_path'] = length + countJson['l_named_path'];
@@ -938,7 +938,7 @@ if (argv.mode === 'basemap'){
     if (tags.hasOwnProperty('footway') && tags.footway === 'sidewalk') {
       try{
      
-        var length = turf.lineDistance(data.geojson(), 'kilometers');
+        var length = turf.distance(data.geojson(), 'kilometers');
         if (countJson.hasOwnProperty('l_sidewalk')){
           countJson['l_sidewalk'] = length + countJson['l_sidewalk'];
         } else {
@@ -1234,165 +1234,306 @@ if (argv.mode === 'basemap'){
 } else if (argv.mode === 'poi') {
   stream.on('data', function (data) {
     var tags = data.tags();
-    if(tags.hasOwnProperty('amenity') && tags.hasOwnProperty('name') && (data.type==='way' || data.type === 'node')){
-      if (countJson.hasOwnProperty('amenities')){
-        countJson['amenities']++;
+    // if(tags.hasOwnProperty('amenity') && tags.hasOwnProperty('name') && (data.type==='way' || data.type === 'node')){
+    //   if (countJson.hasOwnProperty('amenities')){
+    //     countJson['amenities']++;
+    //   } else {
+    //     countJson['amenities'] = 1;
+    //   }
+    // }
+    // if(tags.hasOwnProperty('shop') && tags.hasOwnProperty('name') && (data.type==='way' || data.type === 'node')){
+    //   if (countJson.hasOwnProperty('shopping')){
+    //     countJson['shopping']++;
+    //   } else {
+    //     countJson['shopping'] = 1;
+    //   }
+
+    // }
+    // if(tags.hasOwnProperty('tourism') && tags.hasOwnProperty('name') && (data.type==='way' || data.type === 'node')){
+    //   if (countJson.hasOwnProperty('tourism')){
+    //     countJson['tourism']++;
+    //   } else {
+    //     countJson['tourism'] = 1;
+    //   }
+
+    // }
+    // if(tags.hasOwnProperty('historic') && tags.hasOwnProperty('name') && (data.type==='way' || data.type === 'node')){
+    //   if (countJson.hasOwnProperty('tourism')){
+    //     countJson['tourism']++;
+    //   } else {
+    //     countJson['tourism'] = 1;
+    //   }
+
+    // }
+    
+    
+
+
+
+
+   
+
+    // if(tags.hasOwnProperty('landuse') && tags.hasOwnProperty('name') && data.type==='way'){
+    //   if (countJson.hasOwnProperty('landuse')){
+    //     countJson['landuse']++;
+    //   } else {
+    //     countJson['landuse'] = 1;
+    //   }
+
+    // }
+
+    // if(tags.hasOwnProperty('landuse') && tags.landuse==='industrial' && tags.industrial==='factory' && data.type==='way'){
+    //   if (countJson.hasOwnProperty('industrial_factory')){
+    //     countJson['industrial_factory']++;
+    //   } else {
+    //     countJson['industrial_factory'] = 1;
+    //   }
+    // }
+
+    // if(tags.hasOwnProperty('landuse') && tags.landuse==='commercial' && data.type==='way'){
+    //   if (countJson.hasOwnProperty('landuse_commercial')){
+    //     countJson['landuse_commercial']++;
+
+    //   } else {
+    //     countJson['landuse_commercial'] = 1;
+    //   }
+
+    //     var poly = turf.lineToPolygon(data.geojson());
+
+    //   //console.log(JSON.stringify(poly))
+    //   //console.log(typeof linetopolygon)
+    //     var area =  turf.area(poly)/1000000;
+    //     if (countJson.hasOwnProperty('area_landuse_commercial')){
+    //       countJson['area_landuse_commercial'] = area + countJson['area_landuse_commercial'];
+    //     } else {
+    //       countJson['area_landuse_commercial']=area;
+    //     }
+
+    // }
+
+    // if(tags.hasOwnProperty('building') && tags.building==='commercial' && data.type==='way'){
+    //   if (countJson.hasOwnProperty('building_commercial')){
+    //     countJson['building_commercial']++;
+    //   } else {
+    //     countJson['building_commercial'] = 1;
+    //   }
+    //   var poly = turf.lineToPolygon(data.geojson());
+    //   var area =  turf.area(poly)/1000000;
+    //     if (countJson.hasOwnProperty('area_building_commercial')){
+    //       countJson['area_building_commercial'] = area + countJson['area_building_commercial'];
+    //     } else {
+    //       countJson['area_building_commercial']=area;
+    //     }
+
+    // }
+
+
+    if(tags.hasOwnProperty('building') && tags.building==='commercial' && data.type==='way' || tags.hasOwnProperty('landuse') && tags.landuse==='commercial' && data.type==='way'){
+      if (countJson.hasOwnProperty('building_commerce')){
+        countJson['building_commerce']++;
       } else {
-        countJson['amenities'] = 1;
+        countJson['building_commerce'] = 1;
       }
-    }
-    if(tags.hasOwnProperty('shop') && tags.hasOwnProperty('name') && (data.type==='way' || data.type === 'node')){
-      if (countJson.hasOwnProperty('shopping')){
-        countJson['shopping']++;
-      } else {
-        countJson['shopping'] = 1;
-      }
+      var poly = turf.lineToPolygon(data.geojson());
+      var area =  turf.area(poly)/1000000;
+        if (countJson.hasOwnProperty('area_building_commerce')){
+          countJson['area_building_commerce'] = area + countJson['area_building_commerce'];
+        } else {
+          countJson['area_building_commerce']=area;
+        }
 
     }
-    if(tags.hasOwnProperty('tourism') && tags.hasOwnProperty('name') && (data.type==='way' || data.type === 'node')){
-      if (countJson.hasOwnProperty('tourism')){
-        countJson['tourism']++;
+
+    // if(tags.hasOwnProperty('landuse') && tags.landuse==='farmyard' && data.type==='way'){
+    //   if (countJson.hasOwnProperty('landuse_farmyard')){
+    //     countJson['landuse_farmyard']++;
+    //   } else {
+    //     countJson['landuse_farmyard'] = 1;
+    //   }
+    //   var poly = turf.lineToPolygon(data.geojson());
+    //   var area =  turf.area(poly)/1000000;
+    //     if (countJson.hasOwnProperty('area_landuse_farmyard')){
+    //       countJson['area_landuse_farmyard'] = area + countJson['area_landuse_farmyard'];
+    //     } else {
+    //       countJson['area_landuse_farmyard']=area;
+    //     }
+    // }
+
+    // if(tags.hasOwnProperty('landuse') && tags.landuse==='farmland' && data.type==='way'){
+    //   if (countJson.hasOwnProperty('landuse_farmland')){
+    //     countJson['landuse_farmland']++;
+    //   } else {
+    //     countJson['landuse_farmland'] = 1;
+    //   }
+    //   var poly = turf.lineToPolygon(data.geojson());
+    //   var area =  turf.area(poly)/1000000;
+    //     if (countJson.hasOwnProperty('area_landuse_farmland')){
+    //       countJson['area_landuse_farmland'] = area + countJson['area_landuse_farmland'];
+    //     } else {
+    //       countJson['area_landuse_farmland']=area;
+    //     }
+
+    // }
+
+    if(tags.hasOwnProperty('landuse') && tags.landuse==='farmland' && data.type==='way' || tags.hasOwnProperty('landuse') && tags.landuse==='farmyard' && data.type==='way'){
+      if (countJson.hasOwnProperty('landuse_farm')){
+        countJson['landuse_farm']++;
       } else {
-        countJson['tourism'] = 1;
+        countJson['landuse_farm'] = 1;
       }
+      var poly = turf.lineToPolygon(data.geojson());
+      var area =  turf.area(poly)/1000000;
+        if (countJson.hasOwnProperty('area_landuse_farm')){
+          countJson['area_landuse_farm'] = area + countJson['area_landuse_farm'];
+        } else {
+          countJson['area_landuse_farm']=area;
+        }
 
     }
-    if(tags.hasOwnProperty('historic') && tags.hasOwnProperty('name') && (data.type==='way' || data.type === 'node')){
-      if (countJson.hasOwnProperty('tourism')){
-        countJson['tourism']++;
+
+    if(tags.hasOwnProperty('landuse') && tags.landuse==='industrial' && data.type==='way'){
+      if (countJson.hasOwnProperty('landuse_industrial')){
+        countJson['landuse_industrial']++;
       } else {
-        countJson['tourism'] = 1;
+        countJson['landuse_industrial'] = 1;
       }
+      var poly = turf.lineToPolygon(data.geojson());
+      var area =  turf.area(poly)/1000000;
+        if (countJson.hasOwnProperty('area_landuse_industrial')){
+          countJson['area_landuse_industrial'] = area + countJson['area_landuse_industrial'];
+        } else {
+          countJson['area_landuse_industrial']=area;
+        }
 
     }
-    if(tags.hasOwnProperty('landuse') && tags.hasOwnProperty('name') && data.type==='way'){
-      if (countJson.hasOwnProperty('landuse')){
-        countJson['landuse']++;
-      } else {
-        countJson['landuse'] = 1;
-      }
 
-    }
-    if(tags.hasOwnProperty('building') && tags.hasOwnProperty('name') && (data.type==='way' || data.type === 'relation')){
-      if (countJson.hasOwnProperty('namedBuildings')){
-        countJson['namedBuildings']++;
-      } else {
-        countJson['namedBuildings'] = 1;
-      }
 
-    }
-    if(tags.hasOwnProperty('office') && tags.hasOwnProperty('name') && (data.type==='way' || data.type === 'node')){
-      if (countJson.hasOwnProperty('namedBuildings')){
-        countJson['namedBuildings']++;
-      } else {
-        countJson['namedBuildings'] = 1;
-      }
+    
 
-    }
-    if(tags.hasOwnProperty('addr:housename') && (data.type==='way' || data.type === 'node')){
-      if (countJson.hasOwnProperty('namedBuildings')){
-        countJson['namedBuildings']++;
-      } else {
-        countJson['namedBuildings'] = 1;
-      }
 
-    }
-     if(tags.hasOwnProperty('highway') && tags.hasOwnProperty('name') &&  data.type === 'node'){
-      if (countJson.hasOwnProperty('transport')){
-        countJson['transport']++;
-      } else {
-        countJson['transport'] = 1;
-      }
+    // if(tags.hasOwnProperty('building') && tags.hasOwnProperty('name') && (data.type==='way' || data.type === 'relation')){
+    //   if (countJson.hasOwnProperty('namedBuildings')){
+    //     countJson['namedBuildings']++;
+    //   } else {
+    //     countJson['namedBuildings'] = 1;
+    //   }
 
-    }
-    if(tags.hasOwnProperty('railway') && tags.hasOwnProperty('name') &&  data.type === 'node'){
-      if (countJson.hasOwnProperty('transport')){
-        countJson['transport']++;
-      } else {
-        countJson['transport'] = 1;
-      }
 
-    }
-    if(tags.hasOwnProperty('public_transport') && tags.hasOwnProperty('name') &&  data.type === 'node'){
-      if (countJson.hasOwnProperty('transport')){
-        countJson['transport']++;
-      } else {
-        countJson['transport'] = 1;
-      }
+    // }
 
-    }
-    if(tags.hasOwnProperty('waterway') && tags.waterway === 'dam' && tags.hasOwnProperty('name') &&  data.type === 'node'){
-      if (countJson.hasOwnProperty('infrastructure')){
-        countJson['infrastructure']++;
-      } else {
-        countJson['infrastructure'] = 1;
-      }
+    
+    // if(tags.hasOwnProperty('office') && tags.hasOwnProperty('name') && (data.type==='way' || data.type === 'node')){
+    //   if (countJson.hasOwnProperty('namedBuildings')){
+    //     countJson['namedBuildings']++;
+    //   } else {
+    //     countJson['namedBuildings'] = 1;
+    //   }
 
-    }
-    if(tags.hasOwnProperty('man_made')  && tags.hasOwnProperty('name') &&  data.type === 'node'){
-      if (countJson.hasOwnProperty('infrastructure')){
-        countJson['infrastructure']++;
-      } else {
-        countJson['infrastructure'] = 1;
-      }
+    // }
+    // if(tags.hasOwnProperty('addr:housename') && (data.type==='way' || data.type === 'node')){
+    //   if (countJson.hasOwnProperty('namedBuildings')){
+    //     countJson['namedBuildings']++;
+    //   } else {
+    //     countJson['namedBuildings'] = 1;
+    //   }
 
-    }
-    if(tags.hasOwnProperty('man_made') && tags['man_made']!= 'pipeline' && tags.hasOwnProperty('name') &&  data.type === 'node'){
-      if (countJson.hasOwnProperty('infrastructure')){
-        countJson['infrastructure']++;
-      } else {
-        countJson['infrastructure'] = 1;
-      }
+    // }
+    //  if(tags.hasOwnProperty('highway') && tags.hasOwnProperty('name') &&  data.type === 'node'){
+    //   if (countJson.hasOwnProperty('transport')){
+    //     countJson['transport']++;
+    //   } else {
+    //     countJson['transport'] = 1;
+    //   }
 
-    }
-    if(tags.hasOwnProperty('power') && tags.hasOwnProperty('name') && data.type === 'node'){
-      if (countJson.hasOwnProperty('infrastructure')){
-        countJson['infrastructure']++;
-      } else {
-        countJson['infrastructure'] = 1;
-      }
+    // }
+    // if(tags.hasOwnProperty('railway') && tags.hasOwnProperty('name') &&  data.type === 'node'){
+    //   if (countJson.hasOwnProperty('transport')){
+    //     countJson['transport']++;
+    //   } else {
+    //     countJson['transport'] = 1;
+    //   }
 
-    }
-    if(tags.hasOwnProperty('power') && tags.power!='line' && tags.hasOwnProperty('name') && data.type === 'way'){
-      if (countJson.hasOwnProperty('infrastructure')){
-        countJson['infrastructure']++;
-      } else {
-        countJson['infrastructure'] = 1;
-      }
+    // }
+    // if(tags.hasOwnProperty('public_transport') && tags.hasOwnProperty('name') &&  data.type === 'node'){
+    //   if (countJson.hasOwnProperty('transport')){
+    //     countJson['transport']++;
+    //   } else {
+    //     countJson['transport'] = 1;
+    //   }
 
-    }
-    if(tags.hasOwnProperty('aeroway') && tags.hasOwnProperty('name') && ( data.type === 'way' || data.type === 'node')){
-      if (countJson.hasOwnProperty('infrastructure')){
-        countJson['infrastructure']++;
-      } else {
-        countJson['infrastructure'] = 1;
-      }
+    // }
+    // if(tags.hasOwnProperty('waterway') && tags.waterway === 'dam' && tags.hasOwnProperty('name') &&  data.type === 'node'){
+    //   if (countJson.hasOwnProperty('infrastructure')){
+    //     countJson['infrastructure']++;
+    //   } else {
+    //     countJson['infrastructure'] = 1;
+    //   }
 
-    }
-    if(tags.hasOwnProperty('leisure') && tags.hasOwnProperty('name') && ( data.type === 'way' || data.type === 'node')){
-      if (countJson.hasOwnProperty('leisure')){
-        countJson['leisure']++;
-      } else {
-        countJson['leisure'] = 1;
-      }
+    // }
+    // if(tags.hasOwnProperty('man_made')  && tags.hasOwnProperty('name') &&  data.type === 'node'){
+    //   if (countJson.hasOwnProperty('infrastructure')){
+    //     countJson['infrastructure']++;
+    //   } else {
+    //     countJson['infrastructure'] = 1;
+    //   }
 
-    }
-    if(tags.hasOwnProperty('natural') && tags.hasOwnProperty('name') &&  data.type === 'way'){
-      if (countJson.hasOwnProperty('natural')){
-        countJson['natural']++;
-      } else {
-        countJson['natural'] = 1;
-      }
+    // }
+    // if(tags.hasOwnProperty('man_made') && tags['man_made']!= 'pipeline' && tags.hasOwnProperty('name') &&  data.type === 'node'){
+    //   if (countJson.hasOwnProperty('infrastructure')){
+    //     countJson['infrastructure']++;
+    //   } else {
+    //     countJson['infrastructure'] = 1;
+    //   }
 
-    }
-    if(tags.hasOwnProperty('waterway') && tags.hasOwnProperty('name') &&  data.type === 'node'){
-      if (countJson.hasOwnProperty('natural')){
-        countJson['natural']++;
-      } else {
-        countJson['natural'] = 1;
-      }
+    // }
+    // if(tags.hasOwnProperty('power') && tags.hasOwnProperty('name') && data.type === 'node'){
+    //   if (countJson.hasOwnProperty('infrastructure')){
+    //     countJson['infrastructure']++;
+    //   } else {
+    //     countJson['infrastructure'] = 1;
+    //   }
 
-    }
+    // }
+    // if(tags.hasOwnProperty('power') && tags.power!='line' && tags.hasOwnProperty('name') && data.type === 'way'){
+    //   if (countJson.hasOwnProperty('infrastructure')){
+    //     countJson['infrastructure']++;
+    //   } else {
+    //     countJson['infrastructure'] = 1;
+    //   }
+
+    // }
+    // if(tags.hasOwnProperty('aeroway') && tags.hasOwnProperty('name') && ( data.type === 'way' || data.type === 'node')){
+    //   if (countJson.hasOwnProperty('infrastructure')){
+    //     countJson['infrastructure']++;
+    //   } else {
+    //     countJson['infrastructure'] = 1;
+    //   }
+
+    // }
+    // if(tags.hasOwnProperty('leisure') && tags.hasOwnProperty('name') && ( data.type === 'way' || data.type === 'node')){
+    //   if (countJson.hasOwnProperty('leisure')){
+    //     countJson['leisure']++;
+    //   } else {
+    //     countJson['leisure'] = 1;
+    //   }
+
+    // }
+    // if(tags.hasOwnProperty('natural') && tags.hasOwnProperty('name') &&  data.type === 'way'){
+    //   if (countJson.hasOwnProperty('natural')){
+    //     countJson['natural']++;
+    //   } else {
+    //     countJson['natural'] = 1;
+    //   }
+
+    // }
+    // if(tags.hasOwnProperty('waterway') && tags.hasOwnProperty('name') &&  data.type === 'node'){
+    //   if (countJson.hasOwnProperty('natural')){
+    //     countJson['natural']++;
+    //   } else {
+    //     countJson['natural'] = 1;
+    //   }
+
+    // }
   });
 
 } else {
