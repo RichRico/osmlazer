@@ -13,7 +13,7 @@
 
     	#echo $result >> outpt.json
     	node merge.js >> mergeoutput.json
-    	node result.js >> prueba.json
+    	
 
     
 	done < res.json

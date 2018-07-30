@@ -54,35 +54,36 @@ npm install
 
 Filters are Mapbox GL filters. See `filters/` for examples.
 
-### For a complete exercise we evaluating for Ehtiopia
+## For a complete exercise we will evaluate for Ethiopia in a set of areas
 
-**For this exercise we need to access to file ethiopia and execute the next steps in the terminal**
+**For this exercise we will need to access to file Ethiopia and execute the next steps in the terminal**
 
-- Before to evaluate we need to download the file .pbf for ethiopia from geofabrik and save inside the file ethiopia
+- Before evaluating we need to download the .pbf file for Ethiopia from [Geofabrik](http://download.geofabrik.de/) and save it inside the Ethiopia folder
 
-- Also we need the file of a set of zones within ethiopia in format .json, in our case res.json 
+- We also need the file of the set of zones of Ethiopia in .json format to evaluate by zones, in our case we will use the file res.json that already exists
 
-- if you have a another set of zones in geojson, you can use the next command to conver in .json. Set each feature into a row in files from feature collection
+- If you have another set of zones in .geojson format to evaluate, you can use the following command to convert .json to be evaluated.
 
 ```
 geokit fc2frows input.geojson > output.json
 ```
 
-- Run the command in the terminal inside ehtiopia
+- Run the following command in the terminal inside Ethiopia
 
 ```
 ./index.sh
 ```
 
-- After yo need to convert the file mergeoutput.json to file .geojson using the next command
+- Then you need to convert the `mergeoutput.json` file to `.geojson` format using the following command
 
 ```
 osmlinth -g mergeoutput.json > nameOutputFile.geojson
 ```
 
-- The next step is to convert the file .geojson to file .csv for to show in a spreadsheet and filter the information that we need.
+- The next step is to convert the `.geojson` file to` .csv` format and then view it in a spreadsheet and filter the information that we need.
 
 ```
 geokit fc2csv nameOutputFile.geojson > csv.csv
 ```
-```
+
+**Note:** The final result doesn't give us the exact results because there are areas that it shares with 2 zones and the size of the area varies because it doesn't consider the measure of just up to the limit of the borders.
