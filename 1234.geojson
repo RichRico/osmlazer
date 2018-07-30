@@ -1,9 +1,0 @@
-{
-"type": "FeatureCollection",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-                                                                                
-"features": [
-{ "type": "Feature", "properties": { "timestamp": "2017-11-10T03:29:29Z", "version": "1", "changeset": "0", "source": null, "landuse": "farmyard", "id": "way\/539546383", "FIXME": null, "name": null, "crop": null }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ 39.4557086, 8.4779279 ], [ 39.4557166, 8.4776786 ], [ 39.45595, 8.4776626 ], [ 39.4559419, 8.4779757 ], [ 39.4557944, 8.4780049 ], [ 39.4557086, 8.4779279 ] ] ] ] } },
-{ "type": "Feature", "properties": { "timestamp": "2018-02-01T02:49:04Z", "version": "1", "changeset": "0", "source": null, "landuse": "farmyard", "id": "way\/557523399", "FIXME": null, "name": null, "crop": null }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ 39.5486643, 8.504995 ], [ 39.5488226, 8.5048757 ], [ 39.5488467, 8.5049194 ], [ 39.5488963, 8.5049751 ], [ 39.5487367, 8.5050826 ], [ 39.5486643, 8.504995 ] ] ] ] } }
-]
-}
