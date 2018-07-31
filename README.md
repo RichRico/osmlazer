@@ -30,37 +30,28 @@ mode can be basemap/density/poi/address
 
 ``` 
 
-## Update turf and @turf/line-to-polygon
-
-http://turfjs.org/
-
-For more informarion https://github.com/Turfjs/turf
-
-https://github.com/Turfjs/turf/tree/master/packages/turf-line-to-polygon
-
-```
-npm install @turf/turf
-
-npm install @turf/line-to-polygon
-
-npm install @turf/line-to-polygon --save
-
-after 
-
-npm install
-```
-
 ## Filters
 
 Filters are Mapbox GL filters. See `filters/` for examples.
 
+
 ## For a complete exercise we will evaluate for Ethiopia in a set of areas
 
-**For this exercise we will need to access to file Ethiopia and execute the next steps in the terminal**
+**For this exercise, we must be in the branch `readiness` and then access the Ethiopian file and execute the next steps in the terminal**
+
+- These steps are to change branches and leave everything ready
+
+```
+cd osmlazer
+git checkout readiness
+git fetch --all
+npm install
+```
+
 
 - Before evaluating we need to download the .pbf file for Ethiopia from [Geofabrik](http://download.geofabrik.de/) and save it inside the Ethiopia folder
 
-- We also need the file of the set of zones of Ethiopia in .json format to evaluate by zones, in our case we will use the file res.json that already exists
+- We also need the file of the set of zones of Ethiop	ia in .json format to evaluate by zones, in our case we will use the file res.json that already exists
 
 - If you have another set of zones in .geojson format to evaluate, you can use the following command to convert .json to be evaluated.
 
